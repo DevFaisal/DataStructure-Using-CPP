@@ -59,7 +59,28 @@ void deleteMiddle()
 
     delete slow;
 }
+void removenthElement(int n)
+{
+    if (start == NULL)
+    {
+        return;
+    }
+    Node *fast = start;
+    Node *slow = start;
 
+    for (int i = 1; i <= n; i++)
+    {
+        fast = fast->next;
+    }
+    while (fast->next != NULL)
+    {
+        fast = fast->next;
+        slow = slow->next;
+    }
+    
+    Node *temp = slow;
+    slow->next = slow->next->next;
+}
 int main()
 {
     addElementAtStart(5);
@@ -67,13 +88,7 @@ int main()
     addElementAtStart(3);
     addElementAtStart(2);
     addElementAtStart(1);
-
-    cout << "Initial list: ";
-    printList();
-
-    deleteMiddle();
-
-    cout << "List after deleting middle node: ";
+    removenthElement(2);
     printList();
 
     return 0;
