@@ -5,7 +5,6 @@ using namespace std;
 
 class Stack
 {
-
     int *arr;
     int top;
 
@@ -28,6 +27,8 @@ public:
             arr[top] = x;
         }
     }
+
+    
     void pop()
     {
         if (top == -1)
