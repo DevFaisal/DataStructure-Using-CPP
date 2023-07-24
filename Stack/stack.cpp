@@ -1,69 +1,57 @@
 #include <iostream>
 using namespace std;
 
-#define n 100
-
-class Stack
+class stack
 {
+
     int *arr;
     int top;
+    int size;
 
 public:
-    Stack()
+    stack(int size)
     {
-        arr = new int[n];
+        this->size = size;
+        arr = new int[size];
         top = -1;
     }
-
-    void push(int x)
+    void push(int value)
     {
-        if (top == n - 1)
+        if (top == size - 1)
         {
-            cout << "Stack Overflow" << endl;
+            std::cout << "OverFlow" << std::endl;
+            return;
         }
-        else
-        {
-            top++;
-            arr[top] = x;
-        }
+        top++;
+        arr[top] = value;
     }
-
-    
     void pop()
     {
         if (top == -1)
         {
-            cout << "No elemenet to POP" << endl;
+            std::cout << "Stack is empty" << std::endl;
             return;
         }
         top--;
     }
-
-    int Top()
+    void display()
     {
-        if (top == -1)
+        for (int i = 0; i <= top; i++)
         {
-            cout << "no element in Stack" << endl;
-            return 0;
+            std::cout << arr[i] << std::endl;
         }
-        return arr[top];
-    }
-    bool isEmpty()
-    {
-        return top == -1;
+        std::cout << "----------" << std::endl;
     }
 };
 
 int main()
 {
-    Stack st;
 
-    st.push(1);
-    st.push(2);
-    st.push(3);
-    st.push(4);
-    st.push(5);
-    cout << st.Top() << endl;
-    st.pop();
-    cout << st.Top() << endl;
+    stack s(4);
+    s.push(1);
+    s.push(2);
+    s.push(3);
+    s.display();
+    s.pop();
+    s.display();
 }

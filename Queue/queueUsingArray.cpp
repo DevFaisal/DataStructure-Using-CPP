@@ -33,14 +33,23 @@ public:
             front++;
         }
     }
-    void dequeue()
+    void deQueue()
     {
-        if (back == -1 || front > back)
+        if (front == -1 && back == -1)
         {
-            std::cout << "no element" << std::endl;
+            std::cout << "empty Queue" << std::endl;
             return;
         }
-        front++;
+
+        for (int i = 0; i < back; i++)
+        {
+            arr[i] = arr[i + 1];
+        }
+        back--;
+        if (back == -1)
+        {
+            front = -1;
+        }
     }
     void peek()
     {
@@ -80,6 +89,6 @@ int main()
     s.enqueue(50);
     s.enqueue(60);
     s.display();
-    s.dequeue();
+    s.deQueue();
     s.display();
 }
